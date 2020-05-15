@@ -1,19 +1,15 @@
 class Zodiac {
     constructor(id){
          this.id = id;
-        // this.name = name;
-        // this.comment = comment;
         this.adapter = new ZodiacsAdapter()
         this.fetchAndLoadZodiacs()        
         this.main = document.querySelector('main') 
     }
-
+    // Adapter fetch used to call on renderZodiacs at init
     fetchAndLoadZodiacs(){
         this.adapter.getZodiacs().then(json => this.renderZodiacs(json))
-        //  this.adapter.getZodiacs().then(json => json.data.forEach(zodiacs => this.renderZodiacs(zodiacs)))
-        // .then(json => json.data.forEach(zodiac => this.renderZodiacs(zodiac)))
     }
-
+    // called by fetchAndLoadZodiacs to render block
     renderZodiacs = (zodiacHash) => {
            zodiacHash.forEach(zodiac => {
             const p = document.createElement('p')
@@ -25,15 +21,14 @@ class Zodiac {
                 button.onclick = function(){ 
                     let id = this.parentElement.dataset.id
                     let value = document.getElementById(id).value
-                    // Comment.funTest()
-                    // debugger
+
                     let comment = new Comment(value, id, zodiac.id)
                     comment.addComments()
                     console.log(this)
-                    // console.log(document.getElementById(this.parentElement.dataset.id).value)
+                    //^^/ CALLS ON: addComment fetch from Comment.Js
+                    // To find value and id: console.log(document.getElementById(this.parentElement.dataset.id).value)
                 }
-            
-                // button.addEventListener('click', this.addComments)
+
             const ul = document.createElement('ul')
             const div = document.createElement('div')
                 div.appendChild(p)
@@ -45,11 +40,10 @@ class Zodiac {
             this.main.append(div)
             
             console.log(zodiac);
-           
+           // calls on loadComment in Comment.Js
             zodiac.attributes.comments.forEach(comment => {
-                // debugger
                 let newComment = new Comment(comment.post, comment.id, zodiac.id)
-                newComment.loadComments(ul) //added comment
+                newComment.loadComments(ul)
             })
            })
 
