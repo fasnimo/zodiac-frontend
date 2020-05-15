@@ -22,6 +22,7 @@ class Comment {
             this.loadComments(json)
         })
         .then(setTimeout("location.reload(true)", 100))
+        .catch(error => console.log("Error: " + error))
         //      if (json.message) {
         //        alert(json.message)
         //        } else {
@@ -74,11 +75,23 @@ class Comment {
         button.addEventListener('click', function(e){
             debugger
               const url = `http://localhost:3000/zodiacs/${e.target.dataset.commentId}/comments`
-              const reqObj = {method: 'DELETE'};
-              fetch(url, reqObj)
-              e.target.parentElement.remove()
-              // ${this.baseURL} // 'this' being called in the wrong scope
+              const reqObj = {
+                  method: 'DELETE',
+                  headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",   
+                  }
+                };
+              return fetch(url, reqObj)
+              .then(res => res.json())
+              .then(json => e.target.parentElement.remove(json))
+            //   e.target.parentElement.remove()
+              // ${this.baseURL} // 'this' keyword was being called in the wrong scope
         })
+        li.appendChild(button)
+        list.appendChild(li)
+    }
+}
         
         // button.addEventListener('click', function(list) {
         //     debugger
@@ -98,9 +111,7 @@ class Comment {
         //         //      return json.remove(list)
         //         // })
         // })
-        li.appendChild(button)
-        list.appendChild(li)
-    }
+       
 
         //   deleteComment = () => {
         //         const url = `${this.baseURL}/${list.target.dataset.commentId}`
@@ -108,7 +119,6 @@ class Comment {
         //         fetch(url, reqObj)
         //         .then(li.remove())
         //     }
-}
     //^^  // button.onclick = function(list) {
         // //     
         //     let comId = this.dataset.commentId
