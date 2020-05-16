@@ -37,7 +37,9 @@ class Comment {
         button.addEventListener('click', function(e){
             debugger
               const url = `http://localhost:3000/zodiacs/${e.target.dataset.commentId}/comments`
-              const reqObj = {
+            //  zodiac id: e.target.parentElement.parentElement.parentElement.dataset.id
+            //  comment id: e.target.dataset.commentId  
+            const reqObj = {
                   method: "DELETE",
                   headers: {
                     "Content-Type": "application/json",
@@ -46,9 +48,10 @@ class Comment {
                 };
               return fetch(url, reqObj)
               .then(res => res.json())
-              .then(json => e.target.parentElement.remove(json))
+              .then(json => e.target.parentElement.remove(json)) // selected li to remove
               .catch(error => console.log(error)) 
-            //   e.target.parentElement.remove()
+                // e.target.parentElement.parentElement.remove() // remove ul 
+                //  e.target.parentElement.remove()// just a frame
               // ${this.baseURL} // 'this' keyword was being called in the wrong scope
         })
         li.appendChild(button)
