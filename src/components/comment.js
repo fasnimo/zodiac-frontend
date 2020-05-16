@@ -47,6 +47,7 @@ class Comment {
               return fetch(url, reqObj)
               .then(res => res.json())
               .then(json => e.target.parentElement.remove(json))
+              .catch(error => console.log(error)) 
             //   e.target.parentElement.remove()
               // ${this.baseURL} // 'this' keyword was being called in the wrong scope
         })
