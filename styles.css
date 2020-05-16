@@ -6,6 +6,7 @@ body {
 }
 
 header {
+    text-align: center;
     background-color: rgb(255, 183, 111);
     margin: 0 auto;
     height: 50px;
@@ -21,6 +22,7 @@ main {
 }
 
 div.card {
+    margin: auto;
     background-color: aliceblue;
     height: 250px;
     width: 300px;
