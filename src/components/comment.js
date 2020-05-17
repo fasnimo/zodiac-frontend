@@ -35,7 +35,6 @@ class Comment {
         button.setAttribute('data-comment-id', this.id)
         button.innerHTML = 'Remove'
         button.addEventListener('click', function(e){
-            debugger
               const url = `http://localhost:3000/zodiacs/${e.target.parentElement.parentElement.parentElement.dataset.id}/comments/${e.target.dataset.commentId}`
             //  zodiac id: e.target.parentElement.parentElement.parentElement.dataset.id
             //  comment id: e.target.dataset.commentId  
