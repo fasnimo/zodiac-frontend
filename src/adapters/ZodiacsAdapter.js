@@ -9,6 +9,5 @@ class ZodiacsAdapter {
             .then(json => {
                 return json.data
             })
-            // .then(json => json.data.forEach(zodiac => this.renderZodiacs(zodiac)))
         }
 }
