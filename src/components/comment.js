@@ -26,7 +26,6 @@ class Comment {
     }
      // called by addComments to load and delete comments made
     loadComments = (list) => {
-        // const list = document.querySelector(`div[data-id]='${comment.zodiac_id}'`)
         const li = document.createElement('li')
         const button = document.createElement('button')
         
@@ -49,9 +48,6 @@ class Comment {
               .then(res => res.json())
               .then(info => e.target.parentElement.remove(info)) // selected li to remove
               .catch(error => console.log(error)) 
-                // e.target.parentElement.parentElement.remove() // remove ul 
-                //  e.target.parentElement.remove()// just an example to ref
-              // ${this.baseURL} // 'this' keyword was being called in the wrong scope
         })
         li.appendChild(button)
         list.appendChild(li)
