@@ -21,9 +21,9 @@ class Comment {
             this.loadComments(json)
         })
         .then(setTimeout("location.reload(true)", 100))
-        .catch(error => console.log("Error: " + error))
-            
+        .catch(error => console.log("Error: " + error))       
     }
+    
      // called by addComments to load and delete comments made
     loadComments = (list) => {
         const li = document.createElement('li')
