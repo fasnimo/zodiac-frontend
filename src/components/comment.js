@@ -23,7 +23,7 @@ class Comment {
         .then(setTimeout("location.reload(true)", 100))
         .catch(error => console.log("Error: " + error))       
     }
-    
+
      // called by addComments to load and delete comments made
     loadComments = (list) => {
         const li = document.createElement('li')
@@ -34,9 +34,7 @@ class Comment {
         button.setAttribute('data-comment-id', this.id)
         button.innerHTML = 'Remove'
         button.addEventListener('click', function(e){
-              const url = `http://localhost:3000/zodiacs/${e.target.parentElement.parentElement.parentElement.dataset.id}/comments/${e.target.dataset.commentId}`
-            //  zodiac id: e.target.parentElement.parentElement.parentElement.dataset.id
-            //  comment id: e.target.dataset.commentId  
+            const url = `http://localhost:3000/zodiacs/${e.target.parentElement.parentElement.parentElement.dataset.id}/comments/${e.target.dataset.commentId}`
             const reqObj = {
                   method: "DELETE",
                   headers: {
