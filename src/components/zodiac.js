@@ -43,8 +43,7 @@ class Zodiac {
            // calls on loadComment in Comment.Js for existing comments
             zodiac.attributes.comments.forEach(comment => {
                 let newComment = new Comment(comment.post, comment.id, zodiac.id)
-                // newComment.loadComments(ul)
-                newComment.loadComments(ul) // beta
+                newComment.loadComments(ul) 
             })
            })
 
