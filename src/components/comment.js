@@ -3,9 +3,10 @@ class Comment {
          this.id = id;
         this.post = post;
         this.zodiac_id = zodiac_id;
-        this.baseURL = `http://localhost:3000/zodiacs/${zodiac_id}/comments`;        
+        this.baseURL = `http://localhost:3000/zodiacs/${zodiac_id}/comments`; 
+        this.btnURL = `http://localhost:3000/zodiacs/${zodiac_id}/comments/${this.id}`       
     }
-    // called in Zodiac.js to Post fetch for loadComments.
+    
     addComments(ul) {
         const configObj = {
             method: "POST",
@@ -17,32 +18,33 @@ class Comment {
         }
         return fetch(`${this.baseURL}`, configObj)
          .then(res => res.json())
-         .then(json => { // beta
-            this.makeComment(json, ul) 
-        })
-        //  .then(json => {
-        //     this.loadComments(json)
-        // })
-        // .then(setTimeout("location.reload(true)", 100))
-        .catch(error => console.log("Error: " + error))       
+         .then(this.makeComment(ul))
+         .catch(error => console.log("Error: " + error))       
     }
 
-    makeComment = (data, ul) => { // beta
-        //  debugger
-        // const ul = document.querySelector('ul')//.parentElement.dataset.id
-        // debugger
+    makeComment = (ul) => {
         const li = document.createElement('li')
-        // debugger
-            li.innerText = `${data.data.attributes.post}`
-            //debugger
+            li.innerText = `${this.post}`
+        const button = this.createBtn()     
+        li.appendChild(button)
+        ul.appendChild(li)
+    }
+
+    loadComments = (list) => {
+        const li = document.createElement('li')
+            li.innerText = `${this.post}`
+        const button = this.createBtn()
+        li.appendChild(button)
+        list.appendChild(li) 
+    }
+
+    createBtn = () => {
+        const url = this.btnURL
         const button = document.createElement('button')
             button.setAttribute('class', 'remove')
-            button.setAttribute('data-comment-id', this.id)
+            button.setAttribute('data-btn-id', this.id)
             button.innerText = 'Remove' 
-            button.addEventListener('click', function(e){
-                const url = `http://localhost:3000/zodiacs/${e.target.parentElement.parentElement.parentElement.dataset.id}/comments/${e.target.dataset.commentId}`
-                //  zodiac id: e.target.parentElement.parentElement.parentElement.dataset.id
-                //  comment id: e.target.dataset.commentId  
+            button.addEventListener('click', function(e){          
                 const reqObj = {
                       method: "DELETE",
                       headers: {
@@ -50,46 +52,11 @@ class Comment {
                         "Accept": "application/json",   
                       }
                     };
-                  return fetch(url, reqObj)
+                   return fetch(url, reqObj)
                   .then(res => res.json())
-                  .then(info => e.target.parentElement.remove(info)) // selected li to remove
+                  .then(info => e.target.parentElement.remove(info))
                   .catch(error => console.log(error)) 
             })   
-            // li.innerText = `${this.post}`
-        li.appendChild(button)
-        ul.appendChild(li)
-        // debugger
-       data.appendChild(ul)
-    //    debugger
-    }
-
-     // called by addComments to load and delete comments made
-    loadComments = (list) => {
-        const li = document.createElement('li')
-        const button = document.createElement('button')
-        
-        li.innerText = `${this.post}`
-        button.setAttribute('class', 'remove')
-        button.setAttribute('data-comment-id', this.id)
-        button.innerText = 'Remove'
-        button.addEventListener('click', function(e){
-            const url = `http://localhost:3000/zodiacs/${e.target.parentElement.parentElement.parentElement.dataset.id}/comments/${e.target.dataset.commentId}`
-            //  zodiac id: e.target.parentElement.parentElement.parentElement.dataset.id
-            //  comment id: e.target.dataset.commentId  
-            const reqObj = {
-                  method: "DELETE",
-                  headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",   
-                  }
-                };
-              return fetch(url, reqObj)
-              .then(res => res.json())
-              .then(info => e.target.parentElement.remove(info)) // selected li to remove
-              .catch(error => console.log(error)) 
-        })
-        // list.appendChild(button) // beta
-        li.appendChild(button)
-        list.appendChild(li)
+            return button
     }
 }
