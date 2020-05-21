@@ -6,7 +6,7 @@ class Comment {
         this.baseURL = `http://localhost:3000/zodiacs/${zodiac_id}/comments`; 
         this.btnURL = `http://localhost:3000/zodiacs/${zodiac_id}/comments/${this.id}`       
     }
-    
+
     addComments(ul) {
         const configObj = {
             method: "POST",
@@ -44,7 +44,7 @@ class Comment {
             button.setAttribute('class', 'remove')
             button.setAttribute('data-btn-id', this.id)
             button.innerText = 'Remove' 
-            button.addEventListener('click', function(e){          
+            button.addEventListener('click', function(e){        
                 const reqObj = {
                       method: "DELETE",
                       headers: {
