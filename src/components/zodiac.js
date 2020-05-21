@@ -11,7 +11,7 @@ class Zodiac {
     }
    
     renderZodiacs = (zodiacHash) => {
-           zodiacHash.forEach(zodiac => {
+        zodiacHash.forEach(zodiac => {
             const p = document.createElement('p')
                 p.textContent = `${zodiac.attributes.name}`
             const input = document.createElement('input')
@@ -40,7 +40,7 @@ class Zodiac {
                 let newComment = new Comment(comment.post, comment.id, zodiac.id)
                 newComment.loadComments(ul) 
             })
-           })
+        })
 
     }
        
