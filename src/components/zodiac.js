@@ -1,6 +1,5 @@
 class Zodiac {
-    constructor(id){
-         this.id = id;
+    constructor(){
         this.adapter = new ZodiacsAdapter()
         this.fetchAndLoadZodiacs()        
         this.main = document.querySelector('main') 
