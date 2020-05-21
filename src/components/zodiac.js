@@ -24,8 +24,6 @@ class Zodiac {
 
                     let comment = new Comment(value, id, zodiac.id)
                     comment.addComments(ul)
-                    console.log(this)
-                    
                 }
 
             const ul = document.createElement('ul')
