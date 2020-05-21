@@ -1,6 +1,6 @@
 body {
     background:
-    linear-gradient(to right, rgb(249, 249, 249), #cdcdcd);
+    linear-gradient(to right, #e8e8e8, #b8b8b8);
     margin: 0;
     padding: 0;
 }
@@ -26,7 +26,7 @@ div.card {
     background-color: aliceblue;
     height: 250px;
     width: 300px;
-    box-shadow: 10px 10px rgba(196, 196, 196, 0.605);
+    box-shadow: 10px 10px rgba(255, 183, 111, 0.427);
     padding: 10px;
     border-radius: 10px;
 }

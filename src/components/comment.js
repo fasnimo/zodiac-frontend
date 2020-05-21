@@ -4,7 +4,7 @@ class Comment {
         this.post = post;
         this.zodiac_id = zodiac_id;
         this.baseURL = `http://localhost:3000/zodiacs/${zodiac_id}/comments`; 
-        this.btnURL = `http://localhost:3000/zodiacs/${zodiac_id}/comments/${this.id}`       
+        this.btnURL = `http://localhost:3000/zodiacs/${zodiac_id}/comments/${this.id}`      
     }
 
     addComments(ul) {
@@ -52,7 +52,7 @@ class Comment {
                         "Accept": "application/json",   
                       }
                     };
-                   return fetch(url, reqObj)
+                   fetch(url, reqObj)
                   .then(res => res.json())
                   .then(info => e.target.parentElement.remove(info))
                   .catch(error => console.log(error)) 
