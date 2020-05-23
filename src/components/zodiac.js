@@ -26,7 +26,7 @@ class Zodiac {
                     let value = document.getElementById(id).value
 
                     let comment = new Comment(value, id, zodiac.id)
-                    comment.addComments() // (ul)
+                    comment.addComments()
                 }
                 div.appendChild(p)
                 div.appendChild(button)
