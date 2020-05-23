@@ -7,7 +7,7 @@ class Comment {
         this.btnURL = `http://localhost:3000/zodiacs/${zodiac_id}/comments/${this.id}`      
     }
 
-    addComments(ul) {
+    addComments() { // (ul)
         const configObj = {
             method: "POST",
             headers: {
@@ -18,14 +18,15 @@ class Comment {
         }
         return fetch(`${this.baseURL}`, configObj)
          .then(res => res.json())
-         .then(this.makeComment(ul))
+         .then(this.makeComment()) //(ul)
          .catch(error => console.log("Error: " + error))       
     }
 
-    makeComment = (ul) => {
+    makeComment = () => { // (ul)
+        const ul = document.getElementById(`zodiac-id-${this.zodiac_id}`)
         const li = document.createElement('li')
-            li.innerText = `${this.post}`
-        const button = this.createBtn()     
+         li.innerText = `${this.post}`
+         const button = this.createBtn()     
         li.appendChild(button)
         ul.appendChild(li)
     }

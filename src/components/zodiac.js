@@ -1,5 +1,6 @@
 class Zodiac {
-    constructor(){
+    constructor(id){
+        this.id = id
         this.adapter = new ZodiacsAdapter()
         this.fetchAndLoadZodiacs()        
         this.main = document.querySelector('main') 
@@ -11,6 +12,9 @@ class Zodiac {
    
     renderZodiacs = (zodiacHash) => {
         zodiacHash.forEach(zodiac => {
+            const div = document.createElement('div')
+            const ul = document.createElement('ul')
+                ul.setAttribute('id',`zodiac-id-${zodiac.id}`)
             const p = document.createElement('p')
                 p.textContent = `${zodiac.attributes.name}`
             const input = document.createElement('input')
@@ -22,11 +26,8 @@ class Zodiac {
                     let value = document.getElementById(id).value
 
                     let comment = new Comment(value, id, zodiac.id)
-                    comment.addComments(ul)
+                    comment.addComments() // (ul)
                 }
-
-            const ul = document.createElement('ul')
-            const div = document.createElement('div')
                 div.appendChild(p)
                 div.appendChild(button)
                 div.appendChild(input)
