@@ -25,7 +25,6 @@ class Comment {
     makeComment = () => { 
         const ul = document.getElementById(`zodiac-id-${this.zodiac_id}`)
         const li = document.createElement('li')
-            // li.setAttribute('id', `comment-id-${this.id}`)
             li.innerText = `${this.post}`
         const button = this.createBtn()     
             li.appendChild(button)
@@ -35,7 +34,6 @@ class Comment {
     loadComments = () => {
         const ul = document.getElementById(`zodiac-id-${this.zodiac_id}`)
         const li = document.createElement('li')
-            // li.setAttribute('id', `comment-id-${this.id}`)
             li.innerText = `${this.post}`
         const button = this.createBtn()
             li.appendChild(button)
