@@ -25,38 +25,41 @@ class Comment {
     makeComment = () => { 
         const ul = document.getElementById(`zodiac-id-${this.zodiac_id}`)
         const li = document.createElement('li')
+            // li.setAttribute('id', `comment-id-${this.id}`)
             li.innerText = `${this.post}`
         const button = this.createBtn()     
             li.appendChild(button)
             ul.appendChild(li)
     }
 
-    loadComments = (list) => {
+    loadComments = () => {
+        const ul = document.getElementById(`zodiac-id-${this.zodiac_id}`)
         const li = document.createElement('li')
+            // li.setAttribute('id', `comment-id-${this.id}`)
             li.innerText = `${this.post}`
         const button = this.createBtn()
             li.appendChild(button)
-            list.appendChild(li) 
+            ul.appendChild(li) 
     }
 
     createBtn = () => {
-        const url = this.btnURL
-        const button = document.createElement('button')
+        let url = this.btnURL
+        let button = document.createElement('button')
             button.setAttribute('class', 'remove')
             button.setAttribute('data-btn-id', this.id)
             button.innerText = 'Remove' 
             button.addEventListener('click', function(e){        
-                const reqObj = {
+                const configObj = {
                       method: "DELETE",
                       headers: {
                         "Content-Type": "application/json",
                         "Accept": "application/json",   
                       }
                     };
-                   fetch(url, reqObj)
-                  .then(res => res.json())
-                  .then(info => e.target.parentElement.remove(info))
-                  .catch(error => console.log(error)) 
+                   fetch(url, configObj)
+                    .then(res => res.json())
+                    .then(info => e.target.parentElement.remove(info))
+                    .catch(error => console.log(error)) 
             })   
             return button
     }
