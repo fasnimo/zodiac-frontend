@@ -1,13 +1,14 @@
 class Comment {
-    constructor(post, id, zodiac_id){
-         this.id = id;
+    constructor(id, post, zodiac_id){
+        this.id = id;
         this.post = post;
         this.zodiac_id = zodiac_id;
-        this.baseURL = `http://localhost:3000/zodiacs/${zodiac_id}/comments`; 
-        this.btnURL = `http://localhost:3000/zodiacs/${zodiac_id}/comments/${this.id}`      
+        // this.baseURL = `http://localhost:3000/zodiacs/${zodiac_id}/comments`; 
+        // this.btnURL = `http://localhost:3000/zodiacs/${zodiac_id}/comments/${this.id}`      
     }
 
     addComments() { 
+        let url = `http://localhost:3000/zodiacs/${this.zodiac_id}/comments`
         const configObj = {
             method: "POST",
             headers: {
@@ -16,7 +17,8 @@ class Comment {
             },
             body: JSON.stringify({id: this.id, post: this.post, zodiac_id: this.zodiac_id})
         }
-        return fetch(`${this.baseURL}`, configObj)
+        // return fetch(`${this.baseURL}`, configObj)
+        return fetch(url, configObj)
          .then(res => res.json())
          .then(this.makeComment())
          .catch(error => console.log("Error: " + error))       
@@ -41,11 +43,14 @@ class Comment {
     }
 
     createBtn = () => {
-        let url = this.btnURL
+        // let url = this.btnURL
+        let url = `http://localhost:3000/zodiacs/${this.zodiac_id}/comments/${this.id}`
         let button = document.createElement('button')
             button.setAttribute('class', 'remove')
-            button.setAttribute('data-btn-id', this.id)
+            button.setAttribute('data-btn', this.id) //changed from "data-btn-id" to "data-btn"
+            debugger
             button.innerText = 'Remove' 
+            
             button.addEventListener('click', function(e){        
                 const configObj = {
                       method: "DELETE",
