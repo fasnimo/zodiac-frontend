@@ -1,37 +1,22 @@
-// const app = new App()
-    
 document.addEventListener("DOMContentLoaded", function(){
     fetchZodiacs()
 })
 
-// perhaps I can load the created comments when the page loads with this fetch.
 const fetchZodiacs = () => {
     fetch("http://localhost:3000/zodiacs")
     .then(response => response.json())
     .then(arrayOfZodiacs => {
         arrayOfZodiacs.forEach((element) => {
-            debugger
+            // debugger
             let zodiac = new Zodiac(element.id, element.name)
-                debugger
+                // debugger
                 zodiac.renderZodiacs() 
-            element.comments.forEach((post) => {
-                debugger
-                let comment = new Comment(post.id, post.post, post.zodiac_id)
+            element.comments.forEach(() => {
+                // debugger
+                let comment = new Comment() //not sure if the parameters are needed.
                    comment.loadComments(element.comments)
             })  
         })
     })  
 }
-
-//Come back to this!!!
-
-// const comment = () => {
-//     fetch(`http://localhost:3000/zodiacs/:id/comments/:id`) //need id's
-//     .then(response => response.json())
-//     .then(arrayOfComments => {
-//         arrayOfComments.data.forEach((element) => {
-//             let comment = new Comment(element.post)
-//         })
-//     })
-// }
 
