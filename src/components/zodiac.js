@@ -1,4 +1,4 @@
-let main = document.querySelector('main')
+let main = document.querySelector('main') //does main have to be here?
 
 class Zodiac {
     constructor(id, name){
@@ -20,7 +20,7 @@ class Zodiac {
             button.setAttribute("data-id", this.id) // this.id is the card id
             // debugger
             button.innerText = "Add Behavior Here"
-            // put in serperate function.
+            // below put in serperate function.
             button.onclick = 
                 function(e){ 
                     e.preventDefault()       
