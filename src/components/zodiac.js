@@ -22,14 +22,19 @@ class Zodiac {
             button.setAttribute("data-id", this.id) // this.id is the card id
             // debugger
             button.innerText = "Add Behavior Here"
-            button.onclick = function(e){ 
-                e.preventDefault()       
-                let post = e.target.nextElementSibling.value
-                let comment = new Comment(post ,zodId) 
-                    comment.addComment() 
-                let input = e.target.nextElementSibling
-                    input.value = " "       
-            }
+            button.onclick = 
+                function(e){ 
+                    e.preventDefault()       
+                    debugger
+                    let post = e.target.nextElementSibling.value
+                    let id = null // not sure why but it works
+                    debugger
+                    let comment = new Comment(id, post ,zodId) 
+                    debugger
+                        comment.addComment() 
+                    let input = e.target.nextElementSibling
+                        input.value = " "       
+                 }
             div.appendChild(p)
             div.appendChild(button)
             div.appendChild(input)
@@ -61,5 +66,6 @@ class Zodiac {
 //             <ul id="${this.id}"></ul>
 //         </div>
 //         `
+//         // debugger
 //     }
 // }
