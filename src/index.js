@@ -9,9 +9,8 @@ const fetchZodiacs = () => {
             let zodiac = new Zodiac(element.id, element.name)
                 zodiac.renderZodiac() 
             element.comments.forEach((c) => {
-                debugger
-                let comment = new Comment(c.id, c.post, c.zodiac_id) //not sure if the parameters are needed.
-                   comment.loadComment() //element.comments
+                let comment = new Comment(c.id, c.post, c.zodiac_id) 
+                   comment.loadComment() 
             })  
         })
     })  
