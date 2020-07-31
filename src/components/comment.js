@@ -5,6 +5,7 @@ class Comment {
         this.zodiac_id = zodiac_id;
     }
     static addComment(event){
+        debugger
        // removed this.zodiac_id
         let url = `http://localhost:3000/zodiacs/${event.target.dataset.id}/comments`
         const configObj = {
@@ -70,7 +71,7 @@ class Comment {
     // }
 
     deleteBtn(e){
-        e.preventDefault()
+        // e.preventDefault()
         let url = `http://localhost:3000/zodiacs/${e.target.parentElement.parentElement.id}/comments/${e.target.dataset.id}`
         const configObj = {
             method: "DELETE",
