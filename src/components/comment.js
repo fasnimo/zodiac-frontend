@@ -5,7 +5,7 @@ class Comment {
         this.zodiac_id = zodiac_id;
     }
     static addComment(event){
-        debugger
+        // debugger
        // removed this.zodiac_id
         let url = `http://localhost:3000/zodiacs/${event.target.dataset.id}/comments`
         const configObj = {
@@ -36,10 +36,12 @@ class Comment {
         //     editBtn.innerText = 'Edit' 
         //     editBtn.addEventListener("click", this.editThis)
         let button = document.createElement('button')
+            // debugger
             button.setAttribute('class', 'remove')
             button.setAttribute("data-id", this.id) 
             button.innerText = 'Remove' 
-            button.addEventListener("click", this.deleteBtn)
+            button.onclick = this.deleteBtn
+            // button.addEventListener("click", Comment.deleteBtn)
             li.appendChild(button)
             // li.appendChild(editBtn)
             ul.appendChild(li)         
@@ -70,6 +72,7 @@ class Comment {
 
     // }
 
+    //removed static
     deleteBtn(e){
         // e.preventDefault()
         let url = `http://localhost:3000/zodiacs/${e.target.parentElement.parentElement.id}/comments/${e.target.dataset.id}`
