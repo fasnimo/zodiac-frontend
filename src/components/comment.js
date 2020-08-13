@@ -22,7 +22,7 @@ class Comment {
          })
          .catch(error => console.log("Error: " + error))       
     }
-   loadComment(){
+    loadComment(){
         const ul = document.getElementById(`${this.zodiac_id}`)
         const li = document.createElement('li')
             li.innerText = `${this.post}`
