@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
     fetchZodiacs()
 })
-const fetchZodiacs = () => {
+function fetchZodiacs(){
     fetch("http://localhost:3000/zodiacs")
     .then(response => response.json())
     .then(arrayOfZodiacs => {
