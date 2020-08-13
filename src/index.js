@@ -1,6 +1,13 @@
 document.addEventListener("DOMContentLoaded", function(){
     fetchZodiacs()
+    eventL()
+    
 })
+function eventL(){
+    let btn = document.querySelector("#sort")
+        btn.addEventListener("click", Zodiac.sortName)
+}
+
 function fetchZodiacs(){
     fetch("http://localhost:3000/zodiacs")
     .then(response => response.json())
@@ -15,4 +22,5 @@ function fetchZodiacs(){
         })
     })  
 }
+
 

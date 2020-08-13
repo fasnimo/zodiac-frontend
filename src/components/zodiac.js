@@ -1,7 +1,28 @@
 class Zodiac {
+    static sortAll = []
+
     constructor(id, name){
         this.id = id
-        this.name = name       
+        this.name = name   
+        Zodiac.sortAll.push(this)    // put debugger here.
+    }
+    
+    
+    static sortName(){
+        let main = document.querySelector("main")
+            main.innerHTML = ""
+        Zodiac.sortAll.sort((a, b) => {
+            let aB = a.name
+            let bC = b.name
+            if(aB < bC){
+                return -1
+            } else if(aB > bC){
+                return 1
+            }
+        })
+        Zodiac.sortAll.forEach(obj => {
+            obj.renderZodiac()
+        })
     }
     renderZodiac(){ 
         let main = document.querySelector('main')
